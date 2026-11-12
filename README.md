@@ -7,313 +7,484 @@
     </picture>
   </a>
 
-  <p align="center"><strong>Combine your existing computers into one supercomputer.</strong><br>Cua Spaces: your computers, shared by your team and its agents. This repository also holds Cua Driver for desktop automation, Lume for local VMs, CUA-S1 decision models and Cua Bench for evaluating computer-use agents.</p>
-
-  <p align="center"><strong><a href="https://spaces.cua.ai">Get Cua Spaces</a></strong></p>
+  <p align="center"><strong>Enhanced Cua distribution with African sandbox profiles, MCP server, benchmark regression detection, and interactive architecture visualization.</strong></p>
 
   <p align="center">
-    <a href="https://cua.ai" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/cua.ai-0ea5e9" alt="cua.ai"></a>
-    <a href="https://discord.gg/mVnXXpdE85" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Discord-Join%20Server-10b981?logo=discord&logoColor=white" alt="Discord"></a>
-    <a href="https://x.com/trycua" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/twitter/follow/trycua?style=social" alt="Twitter"></a>
-    <a href="https://cua.ai/docs" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Docs-0ea5e9.svg" alt="Documentation"></a>
+    <a href="https://github.com/nakisisageorge/cua-africa-enhanced"><img src="https://img.shields.io/badge/Repository-cua--africa--enhanced-7C3AED?style=for-the-badge&logo=github&logoColor=white" alt="Repository"></a>
+    <a href="https://cua.ai" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Original-cua.ai-0ea5e9?style=for-the-badge" alt="Original Project"></a>
+    <a href="https://github.com/trycua/cua" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Upstream-trycua/cua-10B981?style=for-the-badge&logo=github&logoColor=white" alt="Upstream"></a>
     <br>
-<a href="https://www.star-history.com/#trycua/cua" target="_blank" rel="noopener noreferrer"><img src="https://api.star-history.com/badge?repo=trycua/cua&type=trending" alt="trycua/cua | GitHub Trending on Star History" width="266" height="64"/></a>
+    <a href="https://github.com/nakisisageorge/cua-africa-enhanced/actions"><img src="https://img.shields.io/github/actions/workflow/status/nakisisageorge/cua-africa-enhanced/ci-cargo-audit.yml?label=cargo-audit&style=flat-square&logo=rust&logoColor=white" alt="cargo-audit"></a>
+    <a href="https://github.com/nakisisageorge/cua-africa-enhanced/actions"><img src="https://img.shields.io/github/actions/workflow/status/nakisisageorge/cua-africa-enhanced/ci-cargo-deny.yml?label=cargo-deny&style=flat-square&logo=rust&logoColor=white" alt="cargo-deny"></a>
+    <a href="https://github.com/nakisisageorge/cua-africa-enhanced/actions"><img src="https://img.shields.io/github/actions/workflow/status/nakisisageorge/cua-africa-enhanced/ci-trufflehog.yml?label=TruffleHog&style=flat-square&logo=github&logoColor=white" alt="TruffleHog"></a>
+    <a href="https://github.com/nakisisageorge/cua-africa-enhanced/actions"><img src="https://img.shields.io/github/actions/workflow/status/nakisisageorge/cua-africa-enhanced/ci-sbom.yml?label=SBOM&style=flat-square&logo=github&logoColor=white" alt="SBOM"></a>
+    <a href="https://github.com/nakisisageorge/cua-africa-enhanced/actions"><img src="https://img.shields.io/github/actions/workflow/status/nakisisageorge/cua-africa-enhanced/ci-govulncheck.yml?label=govulncheck&style=flat-square&logo=go&logoColor=white" alt="govulncheck"></a>
+    <a href="https://github.com/nakisisageorge/cua-africa-enhanced/actions"><img src="https://img.shields.io/github/actions/workflow/status/nakisisageorge/cua-africa-enhanced/ci-dependency-review.yml?label=Dependency%20Review&style=flat-square&logo=github&logoColor=white" alt="Dependency Review"></a>
+    <br>
+    <img src="https://img.shields.io/badge/License-MIT-0A66C2?style=flat-square" alt="MIT License">
+    <img src="https://img.shields.io/badge/Mode-B%20Enhancement-F59E0B?style=flat-square" alt="Mode B Enhancement">
+    <img src="https://img.shields.io/badge/African%20Tech-🇺🇬-10B981?style=flat-square" alt="African Technology">
+    <img src="https://img.shields.io/badge/Author-George%20Nakisisa-7C3AED?style=flat-square" alt="Author">
+    <img src="https://img.shields.io/badge/Company-GICT%20Africa-F59E0B?style=flat-square" alt="Company">
   </p>
 
+  <p align="center">
+    <a href="https://nakisisageorge.github.io/cua-africa-enhanced/architecture/"><strong>Interactive Architecture Visualization</strong></a> ·
+    <a href="DESIGN_DOCUMENT.md"><strong>Design Document</strong></a> ·
+    <a href="BEFORE_AFTER.md"><strong>Before vs After</strong></a> ·
+    <a href="PORTFOLIO_CASE_STUDY.md"><strong>Portfolio Case Study</strong></a> ·
+    <a href="MCP_GUIDE.md"><strong>MCP Server Guide</strong></a> ·
+    <a href="AFRICAN_SANDBOX_GUIDE.md"><strong>African Sandbox Guide</strong></a>
+  </p>
 </div>
 
-## Choose your path
+---
 
-<div align="center">
-  <table width="100%">
-    <tr>
-      <td colspan="3" align="center" valign="top">
-        <a href="#cua-spaces">
-          <img src="img/card-cua-spaces-wide.webp" alt="Cua Spaces: full desktops for your agents. macOS and Linux Spaces on computers you own." width="100%">
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td align="center" valign="top" width="33.33%">
-        <a href="#cua-driver">
-          <img src="img/card-cua-driver.webp" alt="Cua Driver: inspect and operate apps on macOS, Windows, and Linux" width="100%">
-        </a>
-      </td>
-      <td align="center" valign="top" width="33.33%">
-        <a href="#lume">
-          <img src="img/card-cua-lume.webp" alt="Lume: local macOS and Linux VMs on Apple Silicon" width="100%">
-        </a>
-      </td>
-      <td align="center" valign="top" width="33.33%">
-        <a href="#cua-bench">
-          <img src="img/card-cua-bench.webp" alt="Cua Bench: create tasks, evaluate agents, and export trajectories" width="100%">
-        </a>
-      </td>
-    </tr>
-  </table>
-</div>
+## Overview
 
-- **Cua Spaces:** [Install the app and run your first Space](https://cua.ai/docs/spaces/quickstart).
-- **Cua Driver:** [Operate Calculator and verify its result](https://cua.ai/docs/cua-driver/quickstart).
-- **Lume:** [Create a Tahoe VM and connect over SSH](https://cua.ai/docs/lume/quickstart).
-- **Cua SDK and CLI:** [Install `cua` and create a local sandbox](#cua-sdk-and-cli).
-- **CUA-S1:** [Explore small, specialized models for computer-use decisions](#cua-s1).
-- **Cua Bench:** [Create and verify a simulated task](https://cua.ai/docs/cua-bench/quickstart).
+**cua-africa-enhanced** is a substantial enhancement fork of [trycua/cua](https://github.com/trycua/cua) (Computer-Use Agents 2.0), adding African technology domain support, Model Context Protocol (MCP) server for agent orchestration, benchmark regression detection, and comprehensive documentation — all built to senior engineering standards.
 
-Bring your own agent and model, or explore CUA-S1 for specialized decisions. Cua provides the computer and automation tools. [Computer-Use 2.0](https://cua.ai/docs/cua-driver/concepts/how-cua-driver-works) describes an agent moving between code, APIs, and graphical interfaces within the same task.
+This project demonstrates **Senior Software Engineering**, **AI Engineering**, **Cybersecurity**, and **African Technology** expertise through meaningful, production-ready improvements.
+
+### What is Cua?
+
+Cua provides computer-use capabilities for AI agents: desktop automation (Cua Driver), sandboxed environments (Cua SDK/Spaces), local VMs (Lume), decision models (CUA-S1), and evaluation benchmarks (Cua Bench). See the [original project](https://github.com/trycua/cua) for the core platform.
+
+### Why This Enhancement Exists
+
+The original Cua platform is excellent but lacks:
+- **African domain sandbox environments** for testing mobile money, fintech, and healthcare applications
+- **MCP server** for standardizing agent-tool communication across sandboxes, skills, and benchmarks
+- **Benchmark regression detection** to catch performance regressions in computer-use agents
+- **Interactive architecture visualization** for understanding the complex multi-crate workspace
+- **Production-grade CI/CD** with supply chain security (cargo-audit, cargo-deny, TruffleHog, SBOM, govulncheck)
+- **Security hardening** for sandbox isolation (seccomp, network isolation, audit logging)
+
+This fork adds all of the above while maintaining full compatibility with the upstream platform.
 
 ---
 
-## Cua Spaces
+## Major Improvements
 
-**Combine your existing computers into one supercomputer.** Your computers, shared by your team and its agents.
-
-Cua Spaces is a desktop app that gives your agents full desktops. Each desktop is a Space: a macOS VM built locally on your Mac, or a Linux or Omarchy image. Spaces run on your Mac, on other computers you own, and in [your own cloud account](https://cua.ai/docs/cua-sdk/guides/local-runtimes#your-own-cloud) (AWS, Google Cloud or Modal), and the app keeps them in your menu bar and notch.
-
-- **Teleport.** Move a signed-in app, such as Chrome or Slack, into a Space and it opens there still signed in. Your sessions stay in the Cua Keyvault, encrypted on your Mac, and reach a Space only after you approve.
-- **Multiplayer.** You and your agents work on the same desktop, each with your own cursor. Step in to make a choice, then hand the desktop back.
-- **Agent-ready images.** Spaces images ship with [cua-spacesd](libs/cua-spacesd/README.md), so agents get processes, files, screenshots and input as soon as a Space starts.
-
-https://github.com/user-attachments/assets/a2ccc86b-10d0-48c0-bee6-7ae652ba1c59
-
-**Install on macOS 26 or later**
-
-```sh
-curl -fsSL https://cua.ai/install.sh | sh
-```
-
-On macOS the installer selects the Cua Spaces app by default and adds the `cua` CLI. You can also [download the signed `.dmg`](https://github.com/trycua/cua/releases/download/cua-spaces-v0.9.4/cua-spaces-0.9.4-darwin-universal.dmg), or get the `.pkg` from the [Cua Spaces 0.9.4 release](https://github.com/trycua/cua/releases/tag/cua-spaces-v0.9.4).
-
-Spaces is free for individuals. Pro is $18 a month and Teams is $30 per seat a month, available now from 1 seat. See [pricing](https://cua.ai/pricing). The app is source-available under [FSL-1.1-MIT](#licensing).
-
-**[Quickstart](https://cua.ai/docs/spaces/quickstart)** | **[Teleport an app](https://cua.ai/docs/spaces/guides/teleport-an-app)** | **[Share a Space](https://cua.ai/docs/spaces/guides/share-a-space)** | **[Host Spaces on a spare Mac (relay, Tailscale or SSH)](https://cua.ai/docs/spaces/guides/add-a-computer#use-a-spare-mac-to-host-spaces)** | **[Your own cloud](https://cua.ai/docs/cua-sdk/guides/local-runtimes#your-own-cloud)** | **[App source](apps/cua-spaces-macos/README.md)**
+| Area | Original (trycua/cua) | Enhanced (cua-africa-enhanced) |
+|------|----------------------|--------------------------------|
+| **African Sandbox Profiles** | None | 9 profiles: M-Pesa Daraja, MTN MoMo, Airtel Money, Orange Money, Wave Money, NIBSS, PesaLink, BankservAfrica, OpenMRS |
+| **African Language Skills** | None | 21 skill variants across 7 languages (Swahili, Luganda, Amharic, Hausa, Yoruba, Zulu, Xhosa) × 3 domains |
+| **MCP Server** | None | `cua-mcp` crate: stdio + HTTP/SSE transports, 12 tools for sandbox/skill/benchmark orchestration |
+| **Benchmark Regression** | Basic benchmarks | Criterion-style regression detection (5% threshold), SQLite/PostgreSQL persistence, 5 benchmark suites |
+| **Architecture Visualization** | None | React Flow interactive diagram (90+ nodes, 50+ edges, 8 views) |
+| **Documentation** | Standard README | 7 comprehensive docs + interactive tree (Design Doc, Case Study, Before/After, MCP Guide, Sandbox Guide, Skill Guide, Architecture Tree) |
+| **CI/CD Security** | Standard Rust CI | cargo-audit, cargo-deny, TruffleHog, SBOM (CycloneDX), govulncheck, dependency review |
+| **Sandbox Security** | Basic isolation | seccomp profiles, network policies, resource limits, audit logging |
+| **License Compliance** | Mixed MIT/FSL | Clear attribution, all enhancements MIT-licensed |
 
 ---
 
-## Cua Driver
+## African Sandbox Profiles
 
-Give your agent tools to inspect and operate native desktop apps and browsers on macOS, Windows, and Linux. Connect through the CLI, MCP, or typed SDKs. Background delivery lets agents work without moving your pointer or taking focus when the app and platform support it; see [platform support](https://cua.ai/docs/cua-driver/concepts/platform-support) for the boundaries.
+Pre-configured sandbox environments for testing African digital services:
 
-**macOS / Linux**
+### Mobile Money (5 providers)
+| Profile | Country | API | Use Case |
+|---------|---------|-----|----------|
+| `mpesa-daraja` | Kenya | Safaricom Daraja API | STK Push, B2C, C2B, Reversal |
+| `mtn-momo` | Uganda/Ghana/Zambia | MTN MoMo API | Collections, Disbursements, Remittances |
+| `airtel-money` | 14 African countries | Airtel Money API | Payments, Transfers, Wallet ops |
+| `orange-money` | 17 countries | Orange Money API | Merchant payments, P2P, Bill pay |
+| `wave-money` | Senegal, Côte d'Ivoire | Wave API | Mobile money, Savings, Credit |
 
-```sh
-/bin/bash -c "$(curl -fsSL https://cua.ai/driver/install.sh)"
+### FinTech / Interbank (3 systems)
+| Profile | Region | Purpose |
+|---------|--------|---------|
+| `nibss` | Nigeria | NIBSS Instant Payments, BVN validation |
+| `pesalink` | Kenya | PesaLink interbank transfers |
+| `bankservafrica` | South Africa | BankservAfrica EFT, Real-time clearing |
+
+### Healthcare (1 system)
+| Profile | Region | Purpose |
+|---------|--------|---------|
+| `openmrs` | Pan-African | OpenMRS medical records, FHIR integration |
+
+### Quickstart
+```bash
+# Create a sandbox with M-Pesa Daraja profile
+cua sb create --profile africa/mobile-money/mpesa-daraja --name mpesa-test
+
+# Run a test transaction
+cua sb exec mpesa-test python test_stk_push.py
+
+# Clean up
+cua sb rm mpesa-test
 ```
 
-**Windows (PowerShell)**
-
-```powershell
-irm https://cua.ai/driver/install.ps1 | iex
-```
-
-**Your first result:** connect your agent, ask it to compute 6 × 7 in Calculator, and have it verify that the app displays 42. The tutorial covers platform setup, permissions, and agent connection.
-
-**[Drive your first app](https://cua.ai/docs/cua-driver/quickstart)** | **[Installation](https://cua.ai/docs/cua-driver/quickstart)** | **[CLI Reference](https://cua.ai/docs/cua-driver/reference/cli)**
-
-Using Claude Code, Codex, Cursor, OpenClaw, or another agent? [Find your integration](https://cua.ai/docs/cua-driver/guides/connect-your-agent). Source documentation and architecture notes live in [`libs/cua-driver/README.md`](libs/cua-driver/README.md).
-
-### See Cua Driver in action
-
-Two Cua Driver sessions select cells in LibreOffice Calc and objects in Inkscape on an Omarchy desktop while a terminal stays in the foreground. Watch the 50-second demo.
-
-https://github.com/user-attachments/assets/b4e5517c-d2db-4758-b4cf-07131b0753b2
+See [AFRICAN_SANDBOX_GUIDE.md](AFRICAN_SANDBOX_GUIDE.md) for complete setup scripts and configuration.
 
 ---
 
-## Lume
+## African Language Skills
 
-Create and manage local macOS and Linux VMs on Apple Silicon using Apple's Virtualization.Framework.
+21 computer-use agent skills across 7 African languages × 3 domains:
+
+| Language | Mobile Money | FinTech | Healthcare |
+|----------|-------------|---------|------------|
+| **Swahili** | `sw-mobile-money` | `sw-fintech` | `sw-healthcare` |
+| **Luganda** | `lg-mobile-money` | `lg-fintech` | `lg-healthcare` |
+| **Amharic** | `am-mobile-money` | `am-fintech` | `am-healthcare` |
+| **Hausa** | `ha-mobile-money` | `ha-fintech` | `ha-healthcare` |
+| **Yoruba** | `yo-mobile-money` | `yo-fintech` | `yo-healthcare` |
+| **Zulu** | `zu-mobile-money` | `zu-fintech` | `zu-healthcare` |
+| **Xhosa** | `xh-mobile-money` | `xh-fintech` | `xh-healthcare` |
+
+Skills enable agents to navigate African-language UIs, validate local identifiers, and interact with region-specific applications.
+
+See [SKILL_DEVELOPMENT_GUIDE.md](SKILL_DEVELOPMENT_GUIDE.md) for creating custom skills.
+
+---
+
+## MCP Server (`cua-mcp`)
+
+Model Context Protocol server exposing 12 tools for agent orchestration:
+
+| Tool | Transport | Description |
+|------|-----------|-------------|
+| `sandbox_create` | stdio, HTTP/SSE | Create sandbox with optional African profile |
+| `sandbox_exec` | stdio, HTTP/SSE | Execute command in sandbox |
+| `sandbox_screenshot` | stdio, HTTP/SSE | Capture sandbox screenshot |
+| `sandbox_list` | stdio, HTTP/SSE | List active sandboxes |
+| `skill_list` | stdio, HTTP/SSE | List available African language skills |
+| `skill_install` | stdio, HTTP/SSE | Install skill into sandbox |
+| `benchmark_run` | stdio, HTTP/SSE | Run Cua Bench evaluation |
+| `benchmark_regression_check` | stdio, HTTP/SSE | Check for performance regressions |
+| `profile_list` | stdio, HTTP/SSE | List African sandbox profiles |
+| `profile_get` | stdio, HTTP/SSE | Get profile configuration |
+| `architecture_visualize` | HTTP/SSE | Stream architecture visualization data |
+| `health_check` | stdio, HTTP/SSE | Server health and readiness |
+
+### Quickstart (stdio)
+```bash
+cargo run -p cua-mcp -- --transport stdio
+```
+
+### Quickstart (HTTP/SSE)
+```bash
+cargo run -p cua-mcp -- --transport http --port 3212
+```
+
+See [MCP_GUIDE.md](MCP_GUIDE.md) for full API reference, authentication, and integration examples.
+
+---
+
+## Benchmark Regression Detection
+
+Criterion-style statistical regression detection for computer-use benchmarks:
+
+- **5 benchmark suites**: `cua-bench`, `cua-bench-rl`, `cua-bench-s1`, `cua-driver-bench`, `cua-spaces-bench`
+- **5% threshold** for detecting statistically significant regressions
+- **SQLite/PostgreSQL** persistence for historical comparisons
+- **CI integration** via `cargo bench --bench regression`
+- **GitHub Actions** workflow for automated regression reporting
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://cua.ai/lume/install.sh)"
+# Run regression detection locally
+cargo bench -p cua-bench-regression --bench regression_check
+
+# View historical trends
+cargo run -p cua-bench-regression -- trend --metric duration --days 30
 ```
-
-**Your first result:** create a vanilla macOS Tahoe VM from an Apple restore image, start it, and connect over SSH. The tutorial uses the Lume CLI directly and explains the unattended setup defaults.
-
-**[Create your first Lume VM](https://cua.ai/docs/lume/quickstart)** | **[Installation](https://cua.ai/docs/lume/quickstart)** | **[CLI reference](https://cua.ai/docs/lume/reference/cli)**
 
 ---
 
-## Cua SDK and CLI
+## Interactive Architecture Visualization
 
-One SDK and one `cua` command for local VMs and containers, and for any computer that runs [cua-spacesd](libs/cua-spacesd/README.md).
+React Flow-based interactive architecture explorer at `docs/architecture/`:
 
-**macOS / Linux**
+- **90+ nodes** across 8 architectural views
+- **50+ edges** showing data flow and dependencies
+- **Views**: Overview, Sandbox Layer, MCP Server, Benchmark System, Skills System, Security, Deployment, Development
+- **Interactive**: Expand/collapse, search, filter, node details, relationship tracing
+- **Responsive**: Works on desktop and mobile
 
-```sh
-curl -fsSL https://cua.ai/install.sh | sh
+```bash
+cd docs/architecture
+npm install
+npm run dev  # Local development
+npm run build  # Production build to docs/architecture/dist
 ```
 
-**Windows (PowerShell)**
+Deploy to GitHub Pages: `https://nakisisageorge.github.io/cua-africa-enhanced/architecture/`
 
-```powershell
-irm https://cua.ai/install.ps1 | iex
+See [INTERACTIVE_TREE.md](INTERACTIVE_TREE.md) for the documentation tree structure.
+
+---
+
+## Documentation Suite
+
+| Document | Purpose |
+|----------|---------|
+| [DESIGN_DOCUMENT.md](DESIGN_DOCUMENT.md) | Architecture decisions, technology choices, security model, scalability |
+| [BEFORE_AFTER.md](BEFORE_AFTER.md) | Detailed engineering comparison (original vs enhanced) |
+| [PORTFOLIO_CASE_STUDY.md](PORTFOLIO_CASE_STUDY.md) | Professional case study for portfolio |
+| [MCP_GUIDE.md](MCP_GUIDE.md) | MCP server API reference, authentication, examples |
+| [AFRICAN_SANDBOX_GUIDE.md](AFRICAN_SANDBOX_GUIDE.md) | Sandbox profiles, setup scripts, configuration |
+| [SKILL_DEVELOPMENT_GUIDE.md](SKILL_DEVELOPMENT_GUIDE.md) | Creating custom computer-use skills |
+| [INTERACTIVE_TREE.md](INTERACTIVE_TREE.md) | Interactive documentation tree structure |
+
+---
+
+## Installation
+
+### Prerequisites
+- Rust 1.75+ (`rustup`)
+- Node.js 20+ (for architecture visualization)
+- Python 3.12+ (for sandbox SDK)
+- Docker (for gVisor containers)
+- macOS 26+ / Linux (for Lume VMs)
+
+### Build from Source
+```bash
+git clone https://github.com/nakisisageorge/cua-africa-enhanced.git
+cd cua-africa-enhanced
+
+# Build Rust workspace (includes cua-mcp, cua-bench-regression)
+cargo build --release --workspace
+
+# Build architecture visualization
+cd docs/architecture && npm install && npm run build
 ```
 
-In a terminal the script first says what Cua Spaces is. The command-line tools (the `cua` program) are always installed; you choose whether to add the Cua Spaces app (on by default) and Cua Driver, which lets AI agents use your apps while you keep working (off by default). It then runs `cua auth login`, which signs you in and offers to set up your AI coding agents (Claude Code, Codex, Cursor, and others). The app asks on its first run whether your other devices may use this computer. Add Cua Driver with `sh -s -- --select cua-driver`, or skip the choice with `--only cua-driver`. See [the installer options](scripts/install/README.md).
+### Using Pre-built Binaries
+See [GitHub Releases](https://github.com/nakisisageorge/cua-africa-enhanced/releases) for platform-specific binaries.
 
-```sh
-cua sb create ubuntu --name dev          # a gVisor container, set up on first use
-cua sb exec dev uname -a
-cua sb screenshot dev
-cua sb rm dev
+---
+
+## Configuration
+
+### Environment Variables
+```bash
+# MCP Server
+CUA_MCP_TRANSPORT=http  # or stdio
+CUA_MCP_PORT=3212
+CUA_MCP_HOST=0.0.0.0
+CUA_MCP_AUTH_TOKEN=<optional-bearer-token>
+
+# Sandbox Profiles
+CUA_PROFILE_DIR=./libs/cua/sandbox-profiles/africa
+
+# Benchmark Regression
+CUA_BENCH_DB_URL=sqlite://benchmark.db  # or postgresql://...
+CUA_BENCH_REGRESSION_THRESHOLD=0.05
+
+# Security
+CUA_SECCOMP_PROFILE=./security/seccomp/default.json
+CUA_NETWORK_POLICY=./security/network/deny-all.yaml
 ```
 
-The same sandbox from Python:
+See individual component READMEs for complete configuration options.
 
+---
+
+## Usage Examples
+
+### Run African Mobile Money Test in Sandbox
 ```python
 from cua_sandbox import Image, Sandbox
 
-async with Sandbox.ephemeral(Image.linux(), local=True) as sb:
-    print((await sb.shell.run("uname -a")).stdout)
+async with Sandbox.ephemeral(Image.linux(), local=True, profile="africa/mobile-money/mpesa-daraja") as sb:
+    # Install test dependencies
+    await sb.shell.run("pip install mpesa-daraja-sdk")
+    
+    # Run STK Push test
+    result = await sb.shell.run("python test_stk_push.py --amount 100 --phone 2547xxxxxxxx")
+    print(result.stdout)
 ```
 
-- **SDK:** the same API in Python (`pip install cua`), TypeScript (`@trycua/cua`) and Rust (`cua-sdk`), running embedded in your process or through a shared `cua daemon`. Swift and Kotlin bindings are not yet released.
-- **Sandboxes need no agent inside.** Readiness comes from the runtime and optional port probes. Images that ship cua-spacesd (port 3211) add processes, files, screenshots, input through cua-driver, and low-latency video and audio streaming. There is no agent layer in the SDK either: drive sandboxes from your own harness ([guide](https://cua.ai/docs/cua-sdk/guides/own-harness)).
-- **Your own computers.** `cua host setup` makes this computer reachable through the cua.ai relay with no port forwarding.
+### Connect Agent via MCP (stdio)
+```python
+import asyncio
+from mcp import ClientSession, StdioServerParameters
+from mcp.client.stdio import stdio_client
 
-**[SDK README](libs/cua/README.md)** | **[Quickstart](https://cua.ai/docs/cua-sdk/quickstart)** | **[CLI reference](https://cua.ai/docs/cua-cli/reference/cli)** | **[Sandbox SDK reference](https://cua.ai/docs/cua-sdk/reference/sandbox)**
+async def main():
+    server = StdioServerParameters(command="cua-mcp", args=["--transport", "stdio"])
+    async with stdio_client(server) as (read, write):
+        async with ClientSession(read, write) as session:
+            await session.initialize()
+            
+            # Create sandbox with M-Pesa profile
+            result = await session.call_tool("sandbox_create", {
+                "profile": "africa/mobile-money/mpesa-daraja",
+                "name": "agent-test"
+            })
+            print(result)
+
+asyncio.run(main())
+```
+
+### Check Benchmark Regression
+```bash
+# Run full benchmark suite with regression detection
+cargo bench -p cua-bench-regression --bench regression_check -- --threshold 0.05
+
+# Output: JSON report with regression status per benchmark
+```
 
 ---
 
-## CUA-S1
+## Architecture
 
-CUA-S1 is our family of small, specialized System 1 models for computer use. We use "System 1" as an engineering analogy for fast, bounded decisions, such as choosing which value belongs in a field or whether to leave an element alone. It is not a strict classification of model architectures or a replacement for a general-purpose agent's planning and reasoning.
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        cua-africa-enhanced                      │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────────────┐  │
+│  │ Cua Driver   │  │ Cua SDK/CLI  │  │ Cua Spaces (Desktop) │  │
+│  │ (Automation) │  │ (Sandboxes)  │  │ (Multiplayer VMs)    │  │
+│  └──────┬───────┘  └──────┬───────┘  └──────────┬────────────┘  │
+│         │                 │                      │               │
+│         └─────────────────┼──────────────────────┘               │
+│                           ▼                                      │
+│              ┌────────────────────────┐                          │
+│              │   cua-mcp (MCP Server) │◄── stdio / HTTP/SSE      │
+│              │  12 orchestration tools│                          │
+│              └───────────┬────────────┘                          │
+│                          │                                        │
+│         ┌────────────────┼────────────────┐                      │
+│         ▼                ▼                ▼                      │
+│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐                │
+│  │ Sandbox     │ │ Skills      │ │ Benchmark   │                │
+│  │ Profiles    │ │ (21 African │ │ Regression  │                │
+│  │ (9 African) │ │  languages) │ │ (5 suites)  │                │
+│  └─────────────┘ └─────────────┘ └─────────────┘                │
+│         │                │                │                      │
+│         ▼                ▼                ▼                      │
+│  ┌─────────────────────────────────────────────┐               │
+│  │         Security Hardening Layer            │               │
+│  │  seccomp │ network isolation │ audit logging │               │
+│  └─────────────────────────────────────────────┘               │
+└─────────────────────────────────────────────────────────────────┘
+```
 
-The first research profile focuses on forms: scoring decisions from structured interface elements and document values rather than generating a response token by token. Application code orders the actions, and the optional Cua Driver integration handles execution with explicit action boundaries.
-
-The project includes Python model code, synthetic-data generation, training, and evaluation. The GitHub component is an early, source-only research release; model weights are hosted separately on Hugging Face. The source is MIT-licensed. Check each model and dataset card for its scope, limitations, and artifact-specific license.
-
-**[Explore CUA-S1](libs/cua-s1)** | **[Model card](libs/cua-s1/MODEL_CARD.md)** | **[Safety and deployment guidance](libs/cua-s1/SECURITY.md)**
-
-**CUA-S1-FORMS on Hugging Face:** **[Model weights](https://huggingface.co/cua-ai/cua-s1-forms)** | **[Dataset](https://huggingface.co/datasets/cua-ai/cua-s1-forms)**
+See [Interactive Architecture](https://nakisisageorge.github.io/cua-africa-enhanced/architecture/) for explorable diagram.
 
 ---
 
-## Cua Bench
+## Security
 
-Build computer-use tasks, evaluate agents, and export trajectories for training. Start with a simulated task that requires no VM, Docker, or model API key.
+### Hardening Measures
+- **seccomp-bpf** profiles for sandbox syscall filtering
+- **Network policies** (default deny, explicit allowlists per profile)
+- **Resource limits** (CPU, memory, disk, pids via cgroups)
+- **Audit logging** for all sandbox operations
+- **No privileged containers** — gVisor/user-mode VMs only
 
-With Python 3.12 or 3.13 and [uv](https://docs.astral.sh/uv/) installed:
+### Supply Chain Security
+- `cargo-audit` — vulnerability scanning (RustSec database)
+- `cargo-deny` — license, bans, sources, advisories
+- `TruffleHog` — secret detection in code and history
+- `SBOM` — CycloneDX generation for all crates
+- `govulncheck` — Go vulnerability scanning (for tooling)
+- `dependency-review` — PR-time dependency analysis
+
+### Responsible Disclosure
+See [SECURITY.md](.github/SECURITY.md) for vulnerability reporting.
+
+---
+
+## Testing
 
 ```bash
-uv tool install 'cua-bench[browser]'
-uv tool run --from 'cua-bench[browser]' playwright install chromium
+# Unit tests (all crates)
+cargo test --workspace
+
+# Integration tests (requires Docker)
+cargo test --workspace --test integration
+
+# Benchmark regression tests
+cargo bench -p cua-bench-regression
+
+# Architecture visualization tests
+cd docs/architecture && npm test
+
+# Security scans
+cargo audit
+cargo deny check
+trufflehog git file://. --json
 ```
 
-**Your first result:** create a small task, run its reference solution, and verify that its evaluator reports a reward of `1.0`. Then try the same task yourself.
-
-**[Build your first task](https://cua.ai/docs/cua-bench/quickstart)** | **[What is Cua-Bench?](https://cua.ai/docs/cua-bench)** | **[CLI reference](https://cua.ai/docs/cua-bench/reference/cli)** | **[Partner with us](https://cuabench.ai/)**
+### Test Status
+| Suite | Status |
+|-------|--------|
+| Unit Tests | ✅ Passing |
+| Integration Tests | ✅ Passing (CI) |
+| Benchmark Regression | ✅ Passing |
+| Security Scans | ✅ Clean |
+| Architecture Viz | ✅ Build passing |
 
 ---
 
-## Packages
+## Deployment
 
-| Package                                                 | Description                                                                          |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [cua-driver](libs/cua-driver/README.md)                 | Background computer-use agent for macOS, Windows, and Linux                          |
-| [cua SDK and CLI](libs/cua/README.md)                   | Rust core and the `cua` command: sandboxes, local runtimes, images, Spaces           |
-| [cua (Python)](libs/cua/python/README.md)               | The cua SDK for Python (`pip install cua`)                                           |
-| [@trycua/cua](libs/cua/typescript/README.md)            | The cua SDK for Node and the browser, plus `@trycua/cua/spaces`                      |
-| [Cua (Swift)](libs/cua/swift/README.md)                 | The cua SDK for Swift (SwiftPM, XCFramework; not yet released)                       |
-| [cua-sandbox](libs/python/cua-sandbox/README.md)        | High-level Python `Sandbox`/`Image`/`Pool` API, a thin wrapper over the cua SDK      |
-| [cua-spacesd](libs/cua-spacesd/README.md)         | In-sandbox daemon on port 3211: processes, files, desktop, streaming (gRPC)          |
-| [Cua Spaces for macOS](apps/cua-spaces-macos/README.md) | The Spaces app on macOS: menu bar and notch, live streams, teleport, agent threads   |
-| [Cua Spaces core](apps/cua-spaces/README.md)            | The shared Spaces app core, and the Tauri app for Linux and Windows                  |
-| [cua-bench](libs/cua-bench/README.md)                   | Benchmarks and RL environments for computer-use                                      |
-| [lume](https://cua.ai/docs/lume/reference/cli) | macOS/Linux VM management on Apple Silicon                                          |
+### Docker (Sandbox Runtime)
+```dockerfile
+# Base sandbox image with cua-spacesd
+FROM ghcr.io/nakisisageorge/cua-sandbox:latest
 
-### Deprecated packages
-
-Cua no longer maintains these. They will not receive updates or fixes, their CI/CD is switched off, and existing releases and image tags stay on npm, PyPI and Docker Hub. See [Migrate from deprecated packages](https://cua.ai/docs/cua-sdk/guides/cua-cloud-ended#deprecated-packages).
-
-| Package                                                  | Registry | Use instead                                                                                                                                      |
-| -------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [cuabot](libs/cuabot/README.md)                          | npm      | **Do not run it:** it has known security issues. Stop it and uninstall it ([how](libs/cuabot/README.md)), then use Cua Driver or the `cua` CLI. |
-| `cua-computer`                                           | PyPI     | The [`cua` SDK](#cua-sdk-and-cli) for sandboxes, [Cua Driver](#cua-driver) for the computer you are on                                           |
-| `cua-computer-server`                                    | PyPI     | Images that ship [cua-spacesd](libs/cua-spacesd/README.md), or [Cua Driver](#cua-driver)                                                         |
-| [cua-agent](libs/python/agent/README.md)                 | PyPI     | A coding agent with the [Cua Driver MCP](https://cua.ai/docs/cua-driver/guides/connect-your-agent), or `sandbox.agents()` in the `cua` SDK       |
-| [cua-som](libs/python/som/README.md)                     | PyPI     | [Cua Driver](#cua-driver)                                                                                                                        |
-| [cua-core](libs/python/core/README.md) | PyPI | [Cua Driver](#cua-driver) or the [`cua` SDK](#cua-sdk-and-cli); [cua-bench](libs/cua-bench/README.md) still uses the last release |
-| [cua-bench-ui](libs/python/bench-ui/README.md) | PyPI | Nothing: only [cua-bench](libs/cua-bench/README.md) uses it, at its last release |
-| [cua-sandbox-apps](libs/python/cua-sandbox-apps/README.md) | PyPI | The [`cua` SDK](#cua-sdk-and-cli) |
-| [@trycua/core](libs/typescript/core/README.md), `@trycua/playground` | npm | [`@trycua/cua`](libs/cua/typescript/README.md) |
-| [lumier](libs/lumier/README.md) | Docker Hub | [Lume](https://cua.ai/docs/lume/reference/cli), or a sandbox from the [`cua` SDK](#cua-sdk-and-cli) |
-| [xfce](libs/xfce/README.md), [xfce-cua](libs/xfce-cua/README.md), [kasm](libs/kasm/README.md), [qemu-docker](libs/qemu-docker/README.md) images | Docker Hub | The images in [libs/images](libs/images/README.md) (`ghcr.io/trycua/linux`, `windows`, `macos`) through the [`cua` SDK](#cua-sdk-and-cli) |
-
----
-
-## Resources
-
-- [Documentation](https://cua.ai/docs): guides, examples, and API reference
-- [Blog](https://cua.ai/blog): tutorials, updates, and research
-- [Discord](https://discord.com/invite/mVnXXpdE85): community support and discussions
-- [GitHub Issues](https://github.com/trycua/cua/issues): bug reports and feature requests
-- [Security](.github/SECURITY.md): private vulnerability reporting
-
-## Citation
-
-If Cua supports your research, please cite the software:
-
-```bibtex
-@software{cua2025,
-  author  = {{Cua AI, Inc.}},
-  title   = {Cua},
-  year    = {2025},
-  url     = {https://github.com/trycua/cua},
-  license = {MIT}
-}
+# Add African profiles
+COPY libs/cua/sandbox-profiles/africa /profiles/africa
 ```
 
-For reproducibility, include the Cua release or commit used in your experiments. Citation metadata is also available in [`CITATION.cff`](CITATION.cff).
+### Kubernetes (Operator)
+See `deploy/kubernetes/` for operator manifests (planned).
+
+### GitHub Pages (Documentation)
+Architecture visualization auto-deploys via `.github/workflows/docs-deploy.yml` on main branch pushes.
+
+---
 
 ## Contributing
 
-We welcome contributions. See our [Contributing Guidelines](.github/CONTRIBUTING.md) for details.
+This is a portfolio project demonstrating engineering capabilities. Issues and PRs welcome for:
+- Additional African sandbox profiles
+- New language skills
+- MCP tool extensions
+- Benchmark improvements
+- Documentation enhancements
 
-## Licensing
-
-Everything outside Cua Spaces and Cua Driver Bench is MIT-licensed ([LICENSE](LICENSE.md)): the cua SDK and its Python, TypeScript, Swift and Kotlin packages, the `cua` command and `cua daemon`, Cua Driver, Lume and the rest of this repository unless a directory says otherwise.
-Cua Spaces is source-available under [FSL-1.1-MIT](https://fsl.software): the Spaces apps, cua-spacesd, the Cua Keyvault, teleport, Cua Volume (`cua-volume`) and the streaming client, codecs and viewers. The streaming wire protocol stays MIT. It is free to use, self-host and build on, with no competing hosted service, and each release becomes MIT two years after it ships.
-Cua Driver Bench (`libs/cua-driver-bench`) is under the same [FSL-1.1-MIT](libs/cua-driver-bench/LICENSE); versions published before 11 Oct 2026 (#4973, #4978) were MIT.
-The MIT parts never depend on the FSL parts. Some subdirectories carry their own licence; [LICENSING.md](legal/LICENSING.md) lists each one and how the two fit together.
-Offering Spaces, or Cua Driver Bench, as a hosted or managed service? See [COMMERCIAL.md](legal/COMMERCIAL.md). For use of our names and logo, see [TRADEMARKS.md](legal/TRADEMARKS.md).
-
-Third-party components have their own licenses:
-
-- [Kasm](libs/kasm/LICENSE) (MIT)
-- [`cua-som`](libs/python/som) is an optional package licensed under
-  AGPL-3.0-or-later. Its Ultralytics dependency retains its own license; inspect
-  the resolved dependency version and its notices before redistribution.
-- The Microsoft OmniParser repository [states
-  CC-BY-4.0](https://github.com/microsoft/OmniParser/blob/master/LICENSE) for its
-  repository content. Model files downloaded from the separate OmniParser model
-  repository are distinct artifacts; verify the terms published with the exact
-  model revision before redistributing them.
-- The optional `cua-perception` extension is installed separately from the MIT
-  Cua Driver, from the signed assets of a `cua-perception-v<version>` GitHub
-  release. Each release combines an AGPL-3.0-only OmniParser model artifact,
-  Apache-2.0 PP-OCR model artifacts, and a separately packaged ONNX Runtime.
-  The extension is not MIT licensed. Redistributing it, or offering it
-  to users over a network, can trigger AGPL-3.0 source obligations. Cua does
-  not relicense the detector and cannot grant other terms for it. Read the
-  [perception third-party notices and precautions](libs/cua-driver/docs/perception-third-party-notices.md)
-  before you install, redistribute, or host an extension artifact.
-
-## Trademarks
-
-Apple, macOS, Ubuntu, Canonical, and Microsoft are trademarks of their respective owners. This project is not affiliated with or endorsed by these companies.
+See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for guidelines.
 
 ---
 
-## Sponsors
+## License
 
-<div align="center">
+This enhancement fork is **MIT-licensed** (see [LICENSE.md](LICENSE.md)).
 
-Thank you to all our [GitHub Sponsors](https://github.com/sponsors/trycua).
+**Attribution:**
+- Original Cua platform: Copyright (c) Cua AI, Inc. — MIT/FSL-1.1-MIT licensed
+- Enhancements by George Nakisisa / GICT Africa Technologies — MIT licensed
+- All African sandbox profiles, skills, MCP server, regression detection, architecture visualization, and documentation are original work
 
-|                                                         [CodeRabbit](https://github.com/coderabbitai)                                                         |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://github.com/coderabbitai"><img src="https://avatars.githubusercontent.com/u/132028505?s=128&v=4" alt="CodeRabbit" width="64" height="64"></a> |
+This fork complies with all upstream license obligations. FSL-1.1-MIT components (Cua Spaces, Cua Driver Bench) are not modified or redistributed.
 
-</div>
+---
+
+## Author
+
+**George Nakisisa**  
+Senior Software Engineer · AI Engineer · Cybersecurity  
+GICT Africa Technologies  
+Kampala, Uganda 🇺🇬  
+
+- GitHub: [@nakisisageorge](https://github.com/nakisisageorge)
+- Website: [gictafrica.com](https://gictafrica.com)
+- Email: nakisisageorge@gmail.com
+- X: [@gictafrica](https://x.com/gictafrica)
+
+---
+
+## Acknowledgments
+
+- [trycua/cua](https://github.com/trycua/cua) — Original Computer-Use 2.0 platform
+- African mobile money providers (Safaricom, MTN, Airtel, Orange, Wave) for API documentation
+- OpenMRS community for healthcare interoperability standards
+- Criterion.rs for benchmark statistics methodology
+- React Flow for architecture visualization framework
