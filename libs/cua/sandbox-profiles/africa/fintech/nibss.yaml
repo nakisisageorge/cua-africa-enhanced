@@ -1,0 +1,54 @@
+# Nigeria Inter-Bank Settlement System (NIBSS) Sandbox
+# Nigeria's central payment infrastructure
+name: "nibss"
+display_name: "NIBSS Sandbox (Nigeria)"
+description: "Pre-configured sandbox for testing NIBSS payment integrations. Includes NIP (NIBSS Instant Payment), BVN verification, and account validation endpoints."
+region: "NG"
+category: "fintech"
+language: "en"
+currency: "NGN"
+provider: "NIBSS"
+documentation_url: "https://nibss-plc.com.ng/api-documentation"
+sandbox_url: "https://sandbox.nibss.com"
+
+image:
+  base: "ghcr.io/trycua/linux:latest"
+  setup_script: "scripts/setup-nibss.sh"
+  ports:
+    - 8090  # NIBSS simulator HTTP
+    - 8450  # NIBSS simulator HTTPS
+    - 3211  # cua-spacesd
+  env:
+    NIBSS_CLIENT_ID: "${NIBSS_CLIENT_ID}"
+    NIBSS_CLIENT_SECRET: "${NIBSS_CLIENT_SECRET}"
+    NIBSS_ENVIRONMENT: "sandbox"
+    NIBSS_BANK_CODE: "044"  # Access Bank default
+    NIBSS_CALLBACK_URL: "http://localhost:8090/callback"
+
+resources:
+  cpu: "2"
+  memory: "4G"
+  disk: "20G"
+  network: "isolated"
+  allowlist:
+    - "sandbox.nibss.com"
+    - "api.nibss.com"
+    - "github.com"
+    - "crates.io"
+
+skills:
+  - "african-fintech/nibss-en"
+  - "african-fintech/bvn-verification-en"
+  - "gui-automation"
+
+tags:
+  - "nigeria"
+  - "fintech"
+  - "nibss"
+  - "bvn"
+  - "instant-payment"
+  - "banking"
+
+verification:
+  health_check: "curl -f http://localhost:8090/health"
+  test_command: "python3 -m pytest tests/test_nibss_integration.py -v"

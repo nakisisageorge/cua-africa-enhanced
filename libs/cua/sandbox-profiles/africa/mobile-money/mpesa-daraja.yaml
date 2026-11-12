@@ -1,0 +1,55 @@
+# M-Pesa Daraja API Sandbox Profile
+# Kenya's leading mobile money platform by Safaricom
+name: "mpesa-daraja"
+display_name: "M-Pesa Daraja Sandbox (Kenya)"
+description: "Pre-configured sandbox for testing M-Pesa Daraja API integrations. Includes Daraja simulator, STK Push test environment, and B2C/C2B mock endpoints."
+region: "KE"
+category: "mobile-money"
+language: "sw"
+currency: "KES"
+provider: "Safaricom"
+documentation_url: "https://developer.safaricom.co.ke/docs#daraja-api"
+sandbox_url: "https://sandbox.safaricom.co.ke"
+
+image:
+  base: "ghcr.io/trycua/linux:latest"
+  setup_script: "scripts/setup-mpesa-daraja.sh"
+  ports:
+    - 8080  # Daraja simulator HTTP
+    - 8443  # Daraja simulator HTTPS
+    - 3211  # cua-spacesd
+  env:
+    MPESA_CONSUMER_KEY: "${MPESA_CONSUMER_KEY}"
+    MPESA_CONSUMER_SECRET: "${MPESA_CONSUMER_SECRET}"
+    MPESA_SHORTCODE: "174379"
+    MPESA_PASSKEY: "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
+    MPESA_ENVIRONMENT: "sandbox"
+    MPESA_CALLBACK_URL: "http://localhost:8080/callback"
+
+resources:
+  cpu: "2"
+  memory: "4G"
+  disk: "20G"
+  network: "isolated"
+  allowlist:
+    - "sandbox.safaricom.co.ke"
+    - "api.safaricom.co.ke"
+    - "github.com"
+    - "crates.io"
+
+skills:
+  - "african-mobile-money/mpesa-sw"
+  - "african-mobile-money/mpesa-en"
+  - "gui-automation"
+
+tags:
+  - "kenya"
+  - "mobile-money"
+  - "mpesa"
+  - "daraja"
+  - "fintech"
+  - "swahili"
+
+verification:
+  health_check: "curl -f http://localhost:8080/health"
+  test_command: "python3 -m pytest tests/test_mpesa_integration.py -v"

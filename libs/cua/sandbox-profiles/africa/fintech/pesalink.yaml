@@ -1,0 +1,54 @@
+# Kenya PesaLink Sandbox
+# Kenya's real-time interbank payment system
+name: "pesalink"
+display_name: "PesaLink Sandbox (Kenya)"
+description: "Pre-configured sandbox for testing PesaLink integrations. Real-time interbank transfers, account verification, and payment initiation."
+region: "KE"
+category: "fintech"
+language: "sw"
+currency: "KES"
+provider: "Integrated Payment Services Limited (IPSL)"
+documentation_url: "https://pesalink.co.ke/developers"
+sandbox_url: "https://sandbox.pesalink.co.ke"
+
+image:
+  base: "ghcr.io/trycua/linux:latest"
+  setup_script: "scripts/setup-pesalink.sh"
+  ports:
+    - 8091  # PesaLink simulator HTTP
+    - 8451  # PesaLink simulator HTTPS
+    - 3211  # cua-spacesd
+  env:
+    PESALINK_CLIENT_ID: "${PESALINK_CLIENT_ID}"
+    PESALINK_CLIENT_SECRET: "${PESALINK_CLIENT_SECRET}"
+    PESALINK_ENVIRONMENT: "sandbox"
+    PESALINK_BANK_CODE: "01"  # KCB default
+    PESALINK_CALLBACK_URL: "http://localhost:8091/callback"
+
+resources:
+  cpu: "2"
+  memory: "4G"
+  disk: "20G"
+  network: "isolated"
+  allowlist:
+    - "sandbox.pesalink.co.ke"
+    - "api.pesalink.co.ke"
+    - "github.com"
+    - "crates.io"
+
+skills:
+  - "african-fintech/pesalink-sw"
+  - "african-fintech/pesalink-en"
+  - "gui-automation"
+
+tags:
+  - "kenya"
+  - "fintech"
+  - "pesalink"
+  - "interbank"
+  - "real-time-payment"
+  - "swahili"
+
+verification:
+  health_check: "curl -f http://localhost:8091/health"
+  test_command: "python3 -m pytest tests/test_pesalink_integration.py -v"

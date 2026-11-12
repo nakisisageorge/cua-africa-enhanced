@@ -1,0 +1,56 @@
+# MTN MoMo Sandbox Profile
+# Mobile Money platform by MTN Group (Ghana, Uganda, South Africa, etc.)
+name: "mtn-momo"
+display_name: "MTN MoMo Sandbox (Multi-country)"
+description: "Pre-configured sandbox for testing MTN Mobile Money API integrations across Ghana, Uganda, and other MTN markets. Includes MoMo API simulator, collection/disbursement endpoints, and KYC mock."
+region: "GH"
+category: "mobile-money"
+language: "en"
+currency: "GHS"
+provider: "MTN Group"
+documentation_url: "https://momodeveloper.mtn.com/docs"
+sandbox_url: "https://sandbox.momodeveloper.mtn.com"
+
+image:
+  base: "ghcr.io/trycua/linux:latest"
+  setup_script: "scripts/setup-mtn-momo.sh"
+  ports:
+    - 8081  # MoMo simulator HTTP
+    - 8444  # MoMo simulator HTTPS
+    - 3211  # cua-spacesd
+  env:
+    MTN_MOMO_SUBSCRIPTION_KEY: "${MTN_MOMO_SUBSCRIPTION_KEY}"
+    MTN_MOMO_API_USER: "${MTN_MOMO_API_USER}"
+    MTN_MOMO_API_KEY: "${MTN_MOMO_API_KEY}"
+    MTN_MOMO_ENVIRONMENT: "sandbox"
+    MTN_MOMO_TARGET_ENVIRONMENT: "mtn-ghana"
+    MTN_MOMO_CALLBACK_HOST: "localhost:8081"
+
+resources:
+  cpu: "2"
+  memory: "4G"
+  disk: "20G"
+  network: "isolated"
+  allowlist:
+    - "sandbox.momodeveloper.mtn.com"
+    - "proxy.momoapi.mtn.com"
+    - "github.com"
+    - "crates.io"
+
+skills:
+  - "african-mobile-money/mtn-momo-en"
+  - "african-mobile-money/mtn-momo-tw"
+  - "gui-automation"
+
+tags:
+  - "ghana"
+  - "uganda"
+  - "south-africa"
+  - "mobile-money"
+  - "momo"
+  - "mtn"
+  - "fintech"
+
+verification:
+  health_check: "curl -f http://localhost:8081/health"
+  test_command: "python3 -m pytest tests/test_mtn_momo_integration.py -v"

@@ -1,0 +1,58 @@
+# Airtel Money Sandbox Profile
+# Airtel Africa mobile money (Nigeria, Uganda, Kenya, Tanzania, etc.)
+name: "airtel-money"
+display_name: "Airtel Money Sandbox (Multi-country)"
+description: "Pre-configured sandbox for testing Airtel Money API integrations. Includes Airtel Money simulator, USSD flow testing, and merchant payment endpoints."
+region: "NG"
+category: "mobile-money"
+language: "en"
+currency: "NGN"
+provider: "Airtel Africa"
+documentation_url: "https://developer.airtel.africa/docs"
+sandbox_url: "https://sandbox.airtel.africa"
+
+image:
+  base: "ghcr.io/trycua/linux:latest"
+  setup_script: "scripts/setup-airtel-money.sh"
+  ports:
+    - 8082  # Airtel simulator HTTP
+    - 8445  # Airtel simulator HTTPS
+    - 3211  # cua-spacesd
+  env:
+    AIRTEL_CLIENT_ID: "${AIRTEL_CLIENT_ID}"
+    AIRTEL_CLIENT_SECRET: "${AIRTEL_CLIENT_SECRET}"
+    AIRTEL_ENVIRONMENT: "sandbox"
+    AIRTEL_COUNTRY: "NG"
+    AIRTEL_CALLBACK_URL: "http://localhost:8082/callback"
+
+resources:
+  cpu: "2"
+  memory: "4G"
+  disk: "20G"
+  network: "isolated"
+  allowlist:
+    - "openapi.airtel.africa"
+    - "sandbox.airtel.africa"
+    - "github.com"
+    - "crates.io"
+
+skills:
+  - "african-mobile-money/airtel-en"
+  - "african-mobile-money/airtel-ha"
+  - "african-mobile-money/airtel-yo"
+  - "gui-automation"
+
+tags:
+  - "nigeria"
+  - "uganda"
+  - "kenya"
+  - "tanzania"
+  - "mobile-money"
+  - "airtel"
+  - "fintech"
+  - "hausa"
+  - "yoruba"
+
+verification:
+  health_check: "curl -f http://localhost:8082/health"
+  test_command: "python3 -m pytest tests/test_airtel_integration.py -v"

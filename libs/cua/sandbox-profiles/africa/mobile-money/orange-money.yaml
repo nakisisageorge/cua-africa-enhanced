@@ -1,0 +1,57 @@
+# Orange Money Sandbox Profile
+# Orange Money (Côte d'Ivoire, Senegal, Mali, etc.)
+name: "orange-money"
+display_name: "Orange Money Sandbox (Francophone Africa)"
+description: "Pre-configured sandbox for testing Orange Money API integrations across West Africa. Includes Orange Money simulator, API endpoints, and French-language UI flows."
+region: "CI"
+category: "mobile-money"
+language: "fr"
+currency: "XOF"
+provider: "Orange Group"
+documentation_url: "https://developer.orange.com/apis/orange-money-africa"
+sandbox_url: "https://api.orange.com/orange-money-africa"
+
+image:
+  base: "ghcr.io/trycua/linux:latest"
+  setup_script: "scripts/setup-orange-money.sh"
+  ports:
+    - 8083  # Orange simulator HTTP
+    - 8446  # Orange simulator HTTPS
+    - 3211  # cua-spacesd
+  env:
+    ORANGE_CLIENT_ID: "${ORANGE_CLIENT_ID}"
+    ORANGE_CLIENT_SECRET: "${ORANGE_CLIENT_SECRET}"
+    ORANGE_ENVIRONMENT: "sandbox"
+    ORANGE_COUNTRY: "CI"
+    ORANGE_CALLBACK_URL: "http://localhost:8083/callback"
+
+resources:
+  cpu: "2"
+  memory: "4G"
+  disk: "20G"
+  network: "isolated"
+  allowlist:
+    - "api.orange.com"
+    - "developer.orange.com"
+    - "github.com"
+    - "crates.io"
+
+skills:
+  - "african-mobile-money/orange-fr"
+  - "african-mobile-money/orange-wo"
+  - "gui-automation"
+
+tags:
+  - "cote-ivoire"
+  - "senegal"
+  - "mali"
+  - "burkina-faso"
+  - "mobile-money"
+  - "orange"
+  - "fintech"
+  - "french"
+  - "wolof"
+
+verification:
+  health_check: "curl -f http://localhost:8083/health"
+  test_command: "python3 -m pytest tests/test_orange_integration.py -v"

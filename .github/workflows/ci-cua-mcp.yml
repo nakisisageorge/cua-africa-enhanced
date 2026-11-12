@@ -1,0 +1,322 @@
+# Enhanced CI/CD workflow for cua-mcp
+name: CI - cua-mcp
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'libs/cua/crates/cua-mcp/**'
+      - 'libs/cua/sandbox-profiles/africa/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'libs/cua/crates/cua-mcp/**'
+      - 'libs/cua/sandbox-profiles/africa/**'
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+
+env:
+  RUSTFLAGS: "-D warnings"
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  # Quick checks (formatting, clippy, build)
+  quick:
+    name: Quick Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+        with:
+          key: cua-mcp-${{ runner.os }}-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Check formatting
+        run: cargo fmt --check -p cua-mcp
+
+      - name: Run clippy
+        run: cargo clippy -p cua-mcp -- -D warnings
+
+      - name: Build cua-mcp
+        run: cargo build -p cua-mcp --locked
+
+      - name: Build cua-mcp (release)
+        run: cargo build -p cua-mcp --release --locked
+
+  # Unit and integration tests
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: quick
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Run tests
+        run: cargo test -p cua-mcp --locked
+
+      - name: Run doc tests
+        run: cargo test -p cua-mcp --doc --locked
+
+  # Security scanning
+  security:
+    name: Security Scanning
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: quick
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install cargo-audit
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: cargo-audit
+
+      - name: Run cargo-audit
+        run: cargo audit -p cua-mcp
+
+      - name: Install cargo-deny
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: cargo-deny
+
+      - name: Run cargo-deny
+        run: cargo deny -p cua-mcp check licenses bans duplicates sources
+
+      - name: Install TruffleHog
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin
+
+      - name: Run TruffleHog
+        run: trufflehog git file://. --since-commit ${{ github.event.pull_request.base.sha || github.sha }} --fail
+
+  # SBOM Generation
+  sbom:
+    name: SBOM Generation
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: quick
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install cargo-cyclonedx
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: cargo-cyclonedx
+
+      - name: Generate SBOM
+        run: cargo cyclonedx -p cua-mcp --output-target sbom.json
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: cua-mcp-sbom
+          path: sbom.json
+          retention-days: 30
+
+  # Regression testing
+  regression:
+    name: Benchmark Regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    needs: quick
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build regression tool
+        run: cargo build -p cua-bench-regression --release --locked
+
+      - name: Run regression check
+        run: |
+          ./target/release/cua-bench-regression check \
+            --baseline main \
+            --current HEAD \
+            --format json \
+            --output regression-report.json
+
+      - name: Upload regression report
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-report
+          path: regression-report.json
+          retention-days: 30
+
+      - name: Check for regressions
+        run: |
+          REGRESSIONS=$(jq '.regressions_detected' regression-report.json)
+          if [ "$REGRESSIONS" != "0" ]; then
+            echo "::error::Regressions detected!"
+            jq '.details[] | "\(.metric): \(.change_percent)% change (threshold: \(.threshold_percent)%) - \(.severity)"' regression-report.json
+            exit 1
+          fi
+
+  # Profile validation
+  profiles:
+    name: Validate African Profiles
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Validate profile YAML syntax
+        run: |
+          find libs/cua/sandbox-profiles/africa -name "*.yaml" -exec yamllint {} \;
+
+      - name: Validate profile schema
+        run: |
+          python3 -c "
+          import yaml, sys, os
+          required_fields = ['name', 'display_name', 'category', 'region', 'language', 'currency', 'provider', 'image', 'resources', 'skills']
+          profile_dir = 'libs/cua/sandbox-profiles/africa'
+          for root, dirs, files in os.walk(profile_dir):
+              for f in files:
+                  if f.endswith('.yaml'):
+                      path = os.path.join(root, f)
+                      with open(path) as fp:
+                          data = yaml.safe_load(fp)
+                          for field in required_fields:
+                              if field not in data:
+                                  print(f'ERROR: {path} missing required field: {field}')
+                                  sys.exit(1)
+          print('All profiles valid')
+          "
+
+      - name: Validate setup scripts
+        run: |
+          find libs/cua/sandbox-profiles/africa/scripts -name "*.sh" -exec shellcheck {} \;
+
+  # Multi-platform build
+  multi-platform:
+    name: Multi-Platform Build
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    needs: quick
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build cua-mcp
+        run: cargo build -p cua-mcp --release --locked
+
+      - name: Test binary runs
+        run: |
+          if [ "${{ runner.os }}" == "Windows" ]; then
+            ./target/release/cua-mcp.exe --help
+          else
+            ./target/release/cua-mcp --help
+          fi
+
+  # Release preparation
+  release:
+    name: Prepare Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [quick, test, security, sbom, regression, profiles, multi-platform]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create release tag
+        id: tag
+        run: |
+          VERSION=$(cargo metadata --format-version=1 | jq -r '.packages[] | select(.name=="cua-mcp") | .version')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag=cua-mcp-v$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: cua-mcp ${{ steps.tag.outputs.version }}
+          body_path: CHANGELOG.md
+          draft: true
+          prerelease: false
+          files: |
+            target/release/cua-mcp
+            target/release/cua-mcp.exe
+            sbom.json
+
+  # Notify on failure
+  notify-failure:
+    name: Notify Failure
+    runs-on: ubuntu-latest
+    needs: [quick, test, security, sbom, regression, profiles, multi-platform, release]
+    if: failure()
+    steps:
+      - name: Send failure notification
+        run: |
+          echo "CI failed for cua-mcp"
+          echo "Check workflow: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

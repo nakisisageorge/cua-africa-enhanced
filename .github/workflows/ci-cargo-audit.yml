@@ -1,0 +1,51 @@
+# Cargo Audit - Vulnerability Scanning
+name: Security - Cargo Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 3 * * *'  # Daily at 3 AM UTC
+
+jobs:
+  audit:
+    name: Cargo Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install cargo-audit
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: cargo-audit
+
+      - name: Run cargo-audit (workspace)
+        run: cargo audit --workspace
+
+      - name: Run cargo-audit (cua-mcp)
+        run: cargo audit -p cua-mcp
+
+      - name: Run cargo-audit (cua-bench-regression)
+        run: cargo audit -p cua-bench-regression
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cargo-audit-report
+          path: |
+            target/audit*.json
+          retention-days: 30

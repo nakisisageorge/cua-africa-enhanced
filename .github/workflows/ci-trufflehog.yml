@@ -1,0 +1,63 @@
+# TruffleHog - Secret Scanning
+name: Security - TruffleHog Secret Scanning
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 5 * * *'  # Daily at 5 AM UTC
+
+jobs:
+  trufflehog:
+    name: TruffleHog Scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for secret scanning
+
+      - name: Install TruffleHog
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin
+
+      - name: Run TruffleHog (git history)
+        run: |
+          trufflehog git file://. \
+            --since-commit ${{ github.event.pull_request.base.sha || github.sha }} \
+            --fail \
+            --json \
+            --output trufflehog-results.json
+
+      - name: Run TruffleHog (filesystem)
+        run: |
+          trufflehog filesystem . \
+            --fail \
+            --json \
+            --output trufflehog-fs-results.json
+
+      - name: Upload TruffleHog results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trufflehog-results
+          path: |
+            trufflehog-results.json
+            trufflehog-fs-results.json
+          retention-days: 30
+
+      - name: Check for secrets
+        run: |
+          if [ -s trufflehog-results.json ]; then
+            echo "::error::Secrets detected in git history!"
+            jq -r '.[] | "\(.DetectorType): \(.Decoder) - \(.File) - \(.Line)"' trufflehog-results.json | head -20
+            exit 1
+          fi
+          if [ -s trufflehog-fs-results.json ]; then
+            echo "::error::Secrets detected in filesystem!"
+            jq -r '.[] | "\(.DetectorType): \(.Decoder) - \(.File) - \(.Line)"' trufflehog-fs-results.json | head -20
+            exit 1
+          fi

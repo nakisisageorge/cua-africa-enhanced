@@ -1,0 +1,54 @@
+# Wave Money Sandbox Profile
+# Wave (Senegal, Côte d'Ivoire) - Mobile money with simple USSD-like flow
+name: "wave-money"
+display_name: "Wave Money Sandbox (Senegal/CI)"
+description: "Pre-configured sandbox for testing Wave mobile money integrations. Simple API, no-fee model, popular in Senegal and Côte d'Ivoire."
+region: "SN"
+category: "mobile-money"
+language: "fr"
+currency: "XOF"
+provider: "Wave"
+documentation_url: "https://developer.wave.com/docs"
+sandbox_url: "https://api.wave.com"
+
+image:
+  base: "ghcr.io/trycua/linux:latest"
+  setup_script: "scripts/setup-wave-money.sh"
+  ports:
+    - 8084  # Wave simulator HTTP
+    - 8447  # Wave simulator HTTPS
+    - 3211  # cua-spacesd
+  env:
+    WAVE_API_KEY: "${WAVE_API_KEY}"
+    WAVE_ENVIRONMENT: "sandbox"
+    WAVE_COUNTRY: "SN"
+    WAVE_CALLBACK_URL: "http://localhost:8084/callback"
+
+resources:
+  cpu: "2"
+  memory: "4G"
+  disk: "20G"
+  network: "isolated"
+  allowlist:
+    - "api.wave.com"
+    - "developer.wave.com"
+    - "github.com"
+    - "crates.io"
+
+skills:
+  - "african-mobile-money/wave-fr"
+  - "african-mobile-money/wave-wo"
+  - "gui-automation"
+
+tags:
+  - "senegal"
+  - "cote-ivoire"
+  - "mobile-money"
+  - "wave"
+  - "fintech"
+  - "french"
+  - "wolof"
+
+verification:
+  health_check: "curl -f http://localhost:8084/health"
+  test_command: "python3 -m pytest tests/test_wave_integration.py -v"

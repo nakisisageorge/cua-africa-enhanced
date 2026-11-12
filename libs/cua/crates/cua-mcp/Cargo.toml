@@ -1,0 +1,90 @@
+[package]
+name = "cua-mcp"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/nakisisageorge/cua-enhanced"
+description = "Model Context Protocol server for Cua computer-use orchestration"
+authors = ["George Nakisisa <nakisisageorge@gmail.com>"]
+categories = ["api-bindings", "development-tools", "command-line-utilities"]
+keywords = ["mcp", "model-context-protocol", "cua", "computer-use", "ai-agents", "sandbox", "automation"]
+
+[package.metadata.release]
+tag-name = "cua-mcp-v{{version}}"
+
+[lib]
+name = "cua_mcp"
+path = "src/lib.rs"
+
+[[bin]]
+name = "cua-mcp"
+path = "src/main.rs"
+
+[dependencies]
+# Workspace dependencies
+cua-sdk = { path = "../cua-sdk", version = "0.24.1", default-features = false }
+cua-home = { path = "../cua-home", version = "0.24.1" }
+cua-sandbox-core = { path = "../cua-sandbox-core", version = "0.24.1" }
+cua-proto = { path = "../cua-proto", version = "0.24.1" }
+cua-connections = { path = "../cua-connections", version = "0.24.1" }
+cua-auth = { path = "../cua-auth", version = "0.24.1" }
+cua-logging = { path = "../cua-logging", version = "0.24.1" }
+cua-telemetry = { path = "../cua-telemetry", version = "0.24.1" }
+cua-agent-setup = { path = "../cua-agent-setup", version = "0.24.1" }
+cua-agents = { path = "../cua-agents", version = "0.24.1" }
+
+# MCP SDK
+rmcp = { workspace = true, features = ["server", "tokio", "transport-stdio", "transport-http", "transport-sse", "macros"] }
+
+# Async runtime
+tokio = { workspace = true, features = ["full", "macros", "rt-multi-thread", "signal"] }
+tonic = { workspace = true }
+futures = "0.3"
+futures-util = { workspace = true }
+
+# HTTP
+axum = { workspace = true }
+http = { workspace = true }
+hyper = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true, features = ["cors", "trace"] }
+
+# Serialization
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+schemars = { workspace = true }
+
+# Config
+clap = { workspace = true, features = ["derive", "env"] }
+config = { version = "0.14", features = ["toml", "env"] }
+figment = { version = "0.11", features = ["toml", "env", "serde"] }
+
+# Utilities
+uuid = { version = "1", features = ["v4", "serde"] }
+anyhow = "1"
+thiserror = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true, features = ["env-filter", "fmt", "json"] }
+tracing-appender = { workspace = true }
+
+# Security
+ring = { version = "0.17", features = ["alloc", "std"] }
+rustls = { workspace = true }
+rcgen = { version = "0.13", features = ["pem"] }
+
+# Database for regression tracking
+sqlx = { version = "0.8", features = ["runtime-tokio", "sqlite", "chrono", "uuid", "migrate", "offline"] }
+chrono = { version = "0.4", features = ["serde"] }
+
+# Benchmark regression
+criterion = { version = "0.5", features = ["html_reports", "serde"] }
+
+[features]
+default = ["stdio"]
+stdio = []
+http = ["rmcp/transport-http", "rmcp/transport-sse", "axum", "tower-http", "rcgen", "rustls"]
+full = ["stdio", "http"]
+
+[dev-dependencies]
+tokio-test = "0.4"
+rmcp = { workspace = true, features = ["client", "transport-stdio", "transport-http", "transport-sse", "macros"] }

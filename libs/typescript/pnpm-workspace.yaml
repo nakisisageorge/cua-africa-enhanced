@@ -1,0 +1,6 @@
+packages:
+  - "core"
+  - "playground"
+  - "cursor-motion"
+
+minimumReleaseAge: 46080

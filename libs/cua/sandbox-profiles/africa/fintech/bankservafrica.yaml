@@ -1,0 +1,55 @@
+# South Africa BankservAfrica Sandbox
+# South Africa's national payment system
+name: "bankservafrica"
+display_name: "BankservAfrica Sandbox (South Africa)"
+description: "Pre-configured sandbox for testing BankservAfrica payment integrations. Includes RTC (Real-Time Clearing), EFT, and debit order endpoints."
+region: "ZA"
+category: "fintech"
+language: "en"
+currency: "ZAR"
+provider: "BankservAfrica"
+documentation_url: "https://www.bankservafrica.com/developers"
+sandbox_url: "https://sandbox.bankservafrica.com"
+
+image:
+  base: "ghcr.io/trycua/linux:latest"
+  setup_script: "scripts/setup-bankservafrica.sh"
+  ports:
+    - 8092  # BankservAfrica simulator HTTP
+    - 8452  # BankservAfrica simulator HTTPS
+    - 3211  # cua-spacesd
+  env:
+    BANKSERV_CLIENT_ID: "${BANKSERV_CLIENT_ID}"
+    BANKSERV_CLIENT_SECRET: "${BANKSERV_CLIENT_SECRET}"
+    BANKSERV_ENVIRONMENT: "sandbox"
+    BANKSERV_BANK_CODE: "ABSA"
+    BANKSERV_CALLBACK_URL: "http://localhost:8092/callback"
+
+resources:
+  cpu: "2"
+  memory: "4G"
+  disk: "20G"
+  network: "isolated"
+  allowlist:
+    - "sandbox.bankservafrica.com"
+    - "api.bankservafrica.com"
+    - "github.com"
+    - "crates.io"
+
+skills:
+  - "african-fintech/bankservafrica-en"
+  - "african-fintech/bankservafrica-af"
+  - "gui-automation"
+
+tags:
+  - "south-africa"
+  - "fintech"
+  - "bankservafrica"
+  - "rtc"
+  - "eft"
+  - "banking"
+  - "afrikaans"
+
+verification:
+  health_check: "curl -f http://localhost:8092/health"
+  test_command: "python3 -m pytest tests/test_bankservafrica_integration.py -v"

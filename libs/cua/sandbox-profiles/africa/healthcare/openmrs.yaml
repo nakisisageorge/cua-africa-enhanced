@@ -1,0 +1,57 @@
+# OpenMRS Healthcare Sandbox
+# Open-source medical record system widely used in Africa
+name: "openmrs"
+display_name: "OpenMRS Sandbox (Multi-country)"
+description: "Pre-configured sandbox with OpenMRS 3.x reference application. Includes REST API, FHIR endpoints, and sample patient data for African healthcare workflows."
+region: "KE"
+category: "healthcare"
+language: "en"
+currency: "KES"
+provider: "OpenMRS Community"
+documentation_url: "https://openmrs.org/documentation/"
+sandbox_url: "https://demo.openmrs.org"
+
+image:
+  base: "ghcr.io/trycua/linux:latest"
+  setup_script: "scripts/setup-openmrs.sh"
+  ports:
+    - 8080  # OpenMRS HTTP
+    - 8443  # OpenMRS HTTPS
+    - 3211  # cua-spacesd
+  env:
+    OPENMRS_USERNAME: "admin"
+    OPENMRS_PASSWORD: "Admin123"
+    OPENMRS_ENVIRONMENT: "sandbox"
+    OPENMRS_FHIR_BASE: "http://localhost:8080/openmrs/ws/fhir2/R4"
+    OPENMRS_REST_BASE: "http://localhost:8080/openmrs/ws/rest/v1"
+
+resources:
+  cpu: "4"
+  memory: "8G"
+  disk: "50G"
+  network: "isolated"
+  allowlist:
+    - "demo.openmrs.org"
+    - "github.com"
+    - "crates.io"
+    - "docker.io"
+
+skills:
+  - "african-healthcare/openmrs-en"
+  - "african-healthcare/openmrs-sw"
+  - "gui-automation"
+
+tags:
+  - "kenya"
+  - "uganda"
+  - "tanzania"
+  - "rwanda"
+  - "healthcare"
+  - "openmrs"
+  - "fhir"
+  - "emr"
+  - "swahili"
+
+verification:
+  health_check: "curl -f http://localhost:8080/openmrs/ws/rest/v1/session"
+  test_command: "python3 -m pytest tests/test_openmrs_integration.py -v"

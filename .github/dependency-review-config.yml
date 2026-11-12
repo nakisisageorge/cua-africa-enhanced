@@ -1,0 +1,34 @@
+# Dependency Review Configuration
+# https://github.com/actions/dependency-review-action
+
+# Fail on high severity vulnerabilities
+fail-on-severity: high
+
+# Allow list for known false positives or acceptable licenses
+allow-ghsas:
+  # Example: GHSA-xxxx-xxxx-xxxx (if we have a false positive)
+
+# License allow/deny lists
+allow-licenses:
+  - MIT
+  - Apache-2.0
+  - BSD-3-Clause
+  - BSD-2-Clause
+  - ISC
+  - Unicode-DFS-2016
+  - Zlib
+
+# Deny problematic licenses
+deny-licenses:
+  - GPL-2.0
+  - GPL-3.0
+  - AGPL-3.0
+  - LGPL-2.0
+  - LGPL-3.0
+
+# Scope to check
+scope: all
+
+# Ignore specific packages (e.g., transitive deps we can't control)
+ignore-packages:
+  # Example: "crate-name@version"

@@ -1,0 +1,43 @@
+# Cargo Deny - License and Dependency Checks
+name: Security - Cargo Deny
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 4 * * *'  # Daily at 4 AM UTC
+
+jobs:
+  deny:
+    name: Cargo Deny
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install cargo-deny
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: cargo-deny
+
+      - name: Run cargo-deny (workspace)
+        run: |
+          cargo deny --workspace check licenses bans duplicates sources
+
+      - name: Run cargo-deny (cua-mcp)
+        run: cargo deny -p cua-mcp check licenses bans duplicates sources
+
+      - name: Run cargo-deny (cua-bench-regression)
+        run: cargo deny -p cua-bench-regression check licenses bans duplicates sources
